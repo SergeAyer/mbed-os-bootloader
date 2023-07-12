@@ -5,3 +5,6 @@ projectfiles
 mbed-os
 BUILD
 
+update-client
+DISCO_H747I
+

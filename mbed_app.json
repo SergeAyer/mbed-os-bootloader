@@ -1,7 +1,8 @@
 {
     "macros": [
       "MBED_CONF_MBED_TRACE_FEA_IPV6=0",
-      "RTX_STACK_CHECK=1"
+      "RTX_STACK_CHECK=1",
+      "MBED_BOOTLOADER_FLASH_BANK_SIZE=MBED_ROM_SIZE/2"
     ],
     "config": {
       "main-stack-size": {
@@ -21,9 +22,24 @@
         "platform.error-all-threads-info":  1,
         "platform.error-filename-capture-enabled": 1,
         "platform.all-stats-enabled": true,
-        "platform.stack-dump-enabled": true
+        "platform.stack-dump-enabled": true,
+        "update-client.storage-address": "(MBED_BOOTLOADER_FLASH_BANK_SIZE)",
+        "update-client.storage-size": "(MBED_BOOTLOADER_FLASH_BANK_SIZE)",
+        "update-client.storage-locations": 2  
       },
       "DISCO_L475VG_IOT01A": {
+        "platform.thread-stats-enabled": true,
+        "mbed-trace.enable": true,
+        "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
+        "target.restrict_size": "0x40000"
+      },
+      "DISCO_F746NG": {
+        "platform.thread-stats-enabled": true,
+        "mbed-trace.enable": true,
+        "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
+        "target.restrict_size": "0x40000"
+      },
+      "DISCO_H747I": {
         "platform.thread-stats-enabled": true,
         "mbed-trace.enable": true,
         "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",

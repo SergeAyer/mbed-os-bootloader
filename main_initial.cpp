@@ -17,7 +17,7 @@ static void boot_debug(const char *s)
 }
 #endif
 
-int main()
+int main_initial()
 {
 #if MBED_CONF_MBED_TRACE_ENABLE
     mbed_trace_init();
@@ -27,9 +27,11 @@ int main()
     tr_debug("BikeComputer bootloader\r\n");
 
     // at this stage we directly branch to the main application
-    void *sp = *((void **) POST_APPLICATION_ADDR + 0);
-    void *pc = *((void **) POST_APPLICATION_ADDR + 1);
+    void *sp = *((void **) POST_APPLICATION_ADDR + 0);  // NOLINT(readability/casting)
+    void *pc = *((void **) POST_APPLICATION_ADDR + 1);  // NOLINT(readability/casting)
     tr_debug("Starting application at address 0x%08x (sp 0x%08x, pc 0x%08x)\r\n", POST_APPLICATION_ADDR, (uint32_t) sp, (uint32_t) pc);
 
     mbed_start_application(POST_APPLICATION_ADDR);
+
+    return 0;
 }
